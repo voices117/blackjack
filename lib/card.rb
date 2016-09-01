@@ -3,10 +3,10 @@ class Card
 	attr_reader :number
 	attr_reader :value
 
-	CLUBS = 1
-	DIAMONDS = 2
-	HEARTS = 3
-	SPADES = 4
+	CLUBS = 0
+	DIAMONDS = 1
+	HEARTS = 2
+	SPADES = 3
 
 	def initialize suit, number
 		if 1 > number or number > 13

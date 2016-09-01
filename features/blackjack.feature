@@ -33,7 +33,5 @@ Scenario: Pasarse
 	And click "Pedir"
 	And click "Pedir"
 	Then veo "PERDISTE!!"
-
-
-
-
+	And no veo "Pedir"
+	And no veo "Plantarme"
