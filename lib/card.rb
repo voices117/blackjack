@@ -20,4 +20,14 @@ class Card
 			@value = 11
 		end	
 	end
+
+	def symbol
+		if @number > 10
+			return ['J', 'Q', 'K'][@number - 11]
+		elsif @number == 1
+			return 'A'
+		end
+
+		return @number.to_s
+	end
 end

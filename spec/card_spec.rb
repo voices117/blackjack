@@ -19,4 +19,12 @@ describe 'Card' do
 		expect{ c = Card.new Card::CLUBS, 14 }.to raise_exception
 		expect{ c = Card.new Card::CLUBS, 0 }.to raise_exception
 	end
+
+	it 'should return the proper symbol for each value' do
+		symbols = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
+		for v in 1..13
+			c = Card.new Card::CLUBS, v
+			c.symbol.should == symbols[v - 1]
+		end
+	end
 end
