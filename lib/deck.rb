@@ -10,6 +10,8 @@ class Deck
                 @cards << (Card.new suit, number)
             end
         }
+
+        @cards = @cards.shuffle
     end
 
     def num_cards
