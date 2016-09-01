@@ -1,0 +1,38 @@
+*{
+	font-family:arial;
+	font-size:	26px;
+	font-weight: bold;
+	float: left;
+	width: 100%
+}
+.boton{
+    background-color: blue;
+	color: white;
+    width: auto;
+    padding: 10px;
+    border-radius: 6px;
+	text-decoration: none;
+	margin-right: 20px;
+}
+.red{
+	color:red;		
+}
+.black{
+	color:black;		
+}
+.card{
+	padding : 7px;	
+	border : 2px black solid;
+	border-radius: 5px;
+	width: 60px;
+	height: 100px;
+	margin: 10px;
+}
+.palo{ 
+	float: right;
+}
+.numero{
+	width: 100%;
+	float: left;
+	text-align: center;
+}
