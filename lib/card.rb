@@ -8,6 +8,9 @@ class Card
 	SPADES = 4
 
 	def initialize suit, number
+		if 1 > number or number > 13
+			raise 'Invalid card number'
+		end
 		@suit = suit
 		@number = number
 	end
