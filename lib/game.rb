@@ -2,6 +2,8 @@ require_relative 'deck'
 
 class Game
 	attr_reader :score
+	attr_reader :player
+	attr_reader :deck
 	
 	def initialize
 		@deck = Deck.new

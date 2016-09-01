@@ -1,16 +1,21 @@
 require 'sinatra'
+require_relative './lib/game'
+require_relative './lib/player'
 
 get '/' do
     
 end
 
 get '/blackjack' do
+	@@game = Game.new
+	@@game.add_player Player.new
 	@@total = 0
 	erb :blackjack
 end
 
 get '/pedir' do
-	@@total += 7
+	@@game.deal
+	@@total = @@game.player.score
 	if @@total > 21
 		@resultado = "PERDISTE!!"
 	end

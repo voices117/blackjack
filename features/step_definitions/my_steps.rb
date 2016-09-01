@@ -1,5 +1,11 @@
 Given(/^visito la pagina$/) do
   visit '/blackjack'
+  c = Card.new Card::DIAMONDS, 7
+
+  # add some fixed cards
+  @@game.deck.put c
+  @@game.deck.put c
+  @@game.deck.put c
 end
 
 Then(/^veo "(.*?)"$/) do |texto| 

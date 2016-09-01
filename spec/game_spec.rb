@@ -18,4 +18,11 @@ describe 'Game' do
 		g.deal
 		p.hand.size.should == 2
 	end
+
+	it 'should be possible to get the player' do
+		g = Game.new
+		p = Player.new
+		g.add_player p
+		g.player.should == p
+	end
 end
