@@ -36,4 +36,25 @@ describe 'Player' do
 		p.hand[1].should == c
 		p.score.should == 11
 	end
+
+	it 'should have no cards when cards are removed' do
+		p = Player.new
+		p.add_card(Card.new Card::DIAMONDS, 2)
+
+		p.hand.size.should == 1
+
+		p.remove_cards
+		p.hand.size.should == 0
+	end
+
+	it 'should know the correct card values for the numeric cards' do
+		p = Player.new
+
+		for i in 2..10 do
+			p.remove_cards
+
+			p.add_card(Card.new Card::DIAMONDS, i)
+			p.score.should == i
+		end
+	end
 end

@@ -1,5 +1,4 @@
 class Player
-	attr_reader :score
 	attr_reader :hand
 
 	def initialize
@@ -9,6 +8,18 @@ class Player
 
 	def add_card card
 		@hand << card
-		@score += card.number
+	end
+
+	def score
+		score = 0
+		@hand.each { |card|
+			score += card.number
+		}
+
+		score
+	end
+
+	def remove_cards
+		@hand = []
 	end
 end
