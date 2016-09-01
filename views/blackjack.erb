@@ -29,8 +29,10 @@ suit = [
 <h2>
 Total: <%= @@total %>
 </h2>
-<a class="boton" href='/pedir'>Pedir</a>
-<a class="boton" href='/plantarme'>Plantarme</a>
+<% if not @resultado %>
+	<a class="boton" href='/pedir'>Pedir</a>
+	<a class="boton" href='/plantarme'>Plantarme</a>
+<% end %>
 <h3>
 <%= @resultado %>
 </h3>
