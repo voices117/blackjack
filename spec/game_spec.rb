@@ -25,4 +25,9 @@ describe 'Game' do
 		g.add_player p
 		g.player.should == p
 	end
+
+	it 'should be possible to get the deck' do
+		g = Game.new
+		g.deck
+	end
 end
