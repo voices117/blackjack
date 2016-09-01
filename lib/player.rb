@@ -12,9 +12,19 @@ class Player
 
 	def score
 		score = 0
+		numaces = 0
+
 		@hand.each { |card|
-			score += card.number
+			if card.number == 1
+				numaces += 1
+			end
+			score += card.value
 		}
+
+		while score > 21 && numaces > 0 do
+			score -= 10
+			numaces -= 1
+		end		
 
 		score
 	end

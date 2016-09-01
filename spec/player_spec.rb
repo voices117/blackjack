@@ -57,4 +57,48 @@ describe 'Player' do
 			p.score.should == i
 		end
 	end
+
+	it 'should know the correct values for J, Q and K' do
+		p = Player.new
+		
+		for i in 11..13 do
+			p.remove_cards
+			c=Card.new Card::CLUBS, i
+			p.add_card c
+			p.score.should == 10
+		end
+	end
+
+	it 'should know the correct values for Ace' do
+
+		p = Player.new
+
+		ace = Card.new Card::CLUBS, 1
+		p.add_card ace
+		p.score.should == 11
+
+		p.add_card ace
+		p.score.should == 12
+
+		p.add_card ace
+		p.score.should == 13
+	end
+
+	it 'should have 21' do
+		
+		p = Player.new
+
+		k = Card.new Card::DIAMONDS, 13
+		ace = Card.new Card::DIAMONDS, 1
+		p.add_card k
+		p.add_card ace
+		
+		p.score.should == 21
+
+		p.add_card k
+
+		p.score.should == 21
+	end
+		
+
 end

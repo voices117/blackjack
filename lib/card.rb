@@ -1,6 +1,7 @@
 class Card
 	attr_reader :suit
 	attr_reader :number
+	attr_reader :value
 
 	CLUBS = 1
 	DIAMONDS = 2
@@ -13,5 +14,10 @@ class Card
 		end
 		@suit = suit
 		@number = number
+		@value = [number, 10].min	
+
+		if @number == 1
+			@value = 11
+		end	
 	end
 end
