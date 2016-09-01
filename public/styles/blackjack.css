@@ -5,6 +5,17 @@
 	float: left;
 	width: 100%
 }
+
+
+.black{
+	color: black;
+}
+
+.red{
+	color: red;
+}
+
+
 .boton{
     background-color: blue;
 	color: white;
@@ -14,22 +25,19 @@
 	text-decoration: none;
 	margin-right: 20px;
 }
-.red{
-	color:red;		
-}
-.black{
-	color:black;		
-}
+
 .card{
 	padding : 7px;	
 	border : 2px black solid;
 	border-radius: 5px;
 	width: 60px;
-	height: 100px;
+	height: 90px;
 	margin: 10px;
 }
 .palo{ 
-	float: right;
+	float: right; 
+	width: auto;
+	font-size: 32px;
 }
 .numero{
 	width: 100%;

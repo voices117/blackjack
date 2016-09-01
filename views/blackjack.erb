@@ -3,6 +3,29 @@
 <h1>
 Blackjack
 </h1>
+
+<%
+suit = [
+	"<div class='black palo'>&clubs;</div>",
+	"<div class='red palo'>&diams;</div>",
+	"<div class='red palo'>&hearts;</div>",
+	"<div class='black palo'>&spades;</div>",
+]
+%>
+
+<div class="mesa">
+	<% for card in @@game.player.hand do %>
+		<div class="card">
+			<%=	suit[card.suit] %> 
+			<div class="numero">
+				<%= card.number %>
+			</div>
+		</div>
+
+	<% end %>
+</div>
+
+
 <h2>
 Total: <%= @@total %>
 </h2>
