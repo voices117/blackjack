@@ -18,10 +18,10 @@ get '/pedir' do
 end
 
 get '/plantarme' do
-	if @@total > 17
-		@resultado = "GANASTE!!"
+	if @@total > 17 && @@total <= 21
+		@resultado = "El dealer tiene 17. GANASTE!!"
 	else
-		@resultado = "PERDISTE!!"
+		@resultado = "El dealer tiene 17. PERDISTE!!"
 	end
 	erb :blackjack
 end
