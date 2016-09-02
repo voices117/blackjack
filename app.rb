@@ -15,7 +15,7 @@ end
 
 get '/pedir' do
 	@@game.deal
-	@@total = @@game.player.score
+	@@total = @@game.players[0].score
 	if @@total > 21
 		@resultado = "PERDISTE!!"
 	end

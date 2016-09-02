@@ -14,7 +14,7 @@ suit = [
 %>
 
 <div class="mesa">
-	<% for card in @@game.player.hand do %>
+	<% for card in @@game.players[0].hand do %>
 		<div class="card">
 			<%=	suit[card.suit] %> 
 			<div class="numero">
