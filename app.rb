@@ -15,6 +15,12 @@ get '/blackjack' do
 	erb :blackjack
 end
 
+get '/ronda' do
+	@@game.new_round
+	@@total = @@game.players[0].score
+	erb :blackjack
+end
+
 get '/pedir' do
 	@@game.deal
 	@@total = @@game.players[0].score
