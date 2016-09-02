@@ -9,6 +9,7 @@ end
 get '/blackjack' do
 	@@game = Game.new
 	@@game.add_player Player.new
+	@@game.new_round
 	@@total = 0
 	erb :blackjack
 end

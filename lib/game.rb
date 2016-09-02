@@ -5,9 +5,19 @@ class Game
 	attr_reader :players
 	attr_reader :deck
 	
-	def initialize
+	def initialize( players = [] )
 		@deck = Deck.new
-		@players = []
+		@players = players
+	end
+
+	def new_round
+		@turn = 0
+		players.each do |p|
+			p.remove_cards
+			deal
+			deal
+			next_turn
+		end
 		@turn = 0
 	end
 

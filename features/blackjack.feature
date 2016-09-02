@@ -2,6 +2,7 @@ Feature: Blackjack
 
 Scenario: Juego nuevo
 	Given visito la pagina
+	And el mazo tiene "[4, 4, 4, 4]"
 	Then veo "Blackjack"
 	And veo "Total: 0"
 	And veo "Pedir"
@@ -9,11 +10,13 @@ Scenario: Juego nuevo
 
 Scenario: Ver total
 	Given visito la pagina
+	And el mazo tiene "[4, 4, 4, 4]"
 	When click "Pedir"
-	Then veo "Total: 7"
+	Then veo "Total: 12"
 
 Scenario: Ganar
 	Given visito la pagina
+	And el mazo tiene "[4, 4, 4, 4]"
 	When click "Pedir"
 	And click "Pedir"
 	And click "Pedir"
@@ -22,12 +25,14 @@ Scenario: Ganar
 
 Scenario: Perder
 	Given visito la pagina
+	And el mazo tiene "[4, 4, 4, 4]"
 	When click "Pedir"
 	And click "Plantarme"
 	Then veo "PERDISTE!!"
 
 Scenario: Pasarse
 	Given visito la pagina
+	And el mazo tiene "[4, 4, 4, 4]"
 	When click "Pedir"
 	And click "Pedir"
 	And click "Pedir"
