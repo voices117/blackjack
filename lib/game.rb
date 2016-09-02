@@ -25,6 +25,7 @@ class Game
 		end
 
 		# the croupier too
+		croupier.remove_cards
 		croupier.add_card @deck.draw_card
 		croupier.add_card @deck.draw_card
 	end
@@ -46,8 +47,10 @@ class Game
 		if finished?
 			# handles the croupier's turn
 			# draws cards a until it reaches (or passes) 17
+			puts croupier.score			
 			while @croupier.score < 17
 				croupier.add_card @deck.draw_card
+				puts croupier.score
 			end
 		end
 	end

@@ -14,15 +14,36 @@ suit = [
 %>
 
 <div class="mesa">
-	<% for card in @@game.players[0].hand do %>
-		<div class="card">
-			<%=	suit[card.suit] %> 
-			<div class="numero">
-				<%= card.symbol %>
+	<div id="croupier">
+		<%  @@game.finished? ? limit = -1 : limit = -2 %>
+	
+		<% for card in @@game.croupier.hand[0..limit] do %>
+			<div class="card">
+				<%=	suit[card.suit] %> 
+				<div class="numero">
+					<%= card.symbol %>
+				</div>
 			</div>
-		</div>
 
-	<% end %>
+		<% end %>
+		
+		<% if not @@game.finished? %>
+		<div class="blank-card card">
+				
+		</div>
+		<% end %>
+	</div>	
+	<div id="jugador">
+		<% for card in @@game.players[0].hand do %>
+			<div class="card">
+				<%=	suit[card.suit] %> 
+				<div class="numero">
+					<%= card.symbol %>
+				</div>
+			</div>
+
+		<% end %>
+	</div>
 </div>
 
 
@@ -36,4 +57,5 @@ Total: <%= @@total %>
 <h3>
 <%= @resultado %>
 </h3>
-<a href='/blackjack'>Juego nuevo</a>
+<a class="boton" href='/blackjack'>Juego nuevo</a>
+<a class="boton" href='/ronda'>Nueva ronda</a>
