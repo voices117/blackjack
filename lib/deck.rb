@@ -2,16 +2,19 @@ require_relative './card'
 
 
 class Deck
-    attr_reader :cards
-    
-    def initialize
+    def initialize num_decks = 7
         @cards = []
 
-        [Card::CLUBS, Card::DIAMONDS, Card::HEARTS, Card::SPADES].each { |suit|
-            for number in 1..13
-                @cards << (Card.new suit, number)
-            end
-        }
+        num_decks.times do
+            [Card::CLUBS,
+             Card::DIAMONDS,
+             Card::HEARTS,
+             Card::SPADES].each { |suit|
+                for number in 1..13
+                    @cards << (Card.new suit, number)
+                end
+            }
+        end
 
         @cards = @cards.shuffle
     end
