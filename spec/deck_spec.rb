@@ -32,4 +32,20 @@ describe "Deck" do
         drawn_card.should == card
     end
 
+    it "should reset the deck when it falls below 10%% of the cards" do
+        deck = Deck.new 1
+
+        deck.num_cards.should == 52
+
+        46.times do
+            deck.draw_card
+        end
+
+        deck.num_cards.should == 6
+
+        deck.draw_card
+
+        deck.num_cards.should == 52
+    end
+
 end
