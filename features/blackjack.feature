@@ -52,4 +52,12 @@ Scenario: Pasarse
 	And no veo "Pedir"
 	And no veo "Plantarme"
 
-
+Scenario: Ronda nuevo
+	Given visito la pagina
+	And el mazo tiene "[9, 8, 1, 2, 4, 4, 4, 4, 10, 7, 4, 4]"
+	When click "Pedir"
+	And click "Pedir"
+	And click "Pedir"
+	And click "Pedir"
+	And click "Nueva ronda"
+	Then veo "Total: 13"
