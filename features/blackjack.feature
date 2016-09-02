@@ -16,9 +16,8 @@ Scenario: Ver total
 
 Scenario: Ganar
 	Given visito la pagina
-	And el mazo tiene "[4, 4, 4, 4]"
+	And el mazo tiene "[6, 4, 4, 4]"
 	When click "Pedir"
-	And click "Pedir"
 	And click "Pedir"
  	And click "Plantarme"
 	Then veo "GANASTE!!"
