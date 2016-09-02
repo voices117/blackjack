@@ -24,12 +24,16 @@ class Player
 		while score > 21 && numaces > 0 do
 			score -= 10
 			numaces -= 1
-		end		
+		end
 
 		score
 	end
 
 	def remove_cards
 		@hand = []
+	end
+
+	def to_s
+		"{ score=#{@score}, hand=#{@hand} }"
 	end
 end
