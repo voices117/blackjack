@@ -14,11 +14,11 @@ class Card
 		end
 		@suit = suit
 		@number = number
-		@value = [number, 10].min	
+		@value = [number, 10].min
 
 		if @number == 1
 			@value = 11
-		end	
+		end
 	end
 
 	def symbol
@@ -29,5 +29,10 @@ class Card
 		end
 
 		return @number.to_s
+	end
+
+	def to_s
+		h = { CLUBS => "\u2667", SPADES => "\u2660", DIAMONDS => "\u2662", HEARTS => "\u2661" }
+		"#{@number}#{h[@suit]}"
 	end
 end
