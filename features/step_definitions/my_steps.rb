@@ -64,14 +64,18 @@ Given(/^el mazo tiene "\[(.*?)\]"$/) do |v|
 	@@game.new_round
 end
 
-
 Then(/^veo una carta boca abajo$/) do
-  
+	last_response.should have_selector('div.mesa div#croupier blank-card')
 end
 
-Then(/^veo una carta "(.*?)" de "(.*?)"$/) do |numero, palo|
-#	suit = translate_suit palo
-#	last_response.body.should =~ /"<div class=\"numero\"> #{numero} </div>"}/m
-
+Then(/^veo carta "(.*?)" para jugador "(.*?)"$/) do |n, player|
+	within 'div.mesa div#jugador' do |scope|
+		scope.should contain(n)
+	end
 end
 
+Then(/^veo carta "(.*?)" para croupier$/) do |n|
+	within 'div.mesa div#croupier' do |scope|
+		scope.should contain(n)
+	end
+end
