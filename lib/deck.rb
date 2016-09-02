@@ -3,9 +3,14 @@ require_relative './card'
 
 class Deck
     def initialize num_decks = 7
+        @num_decks = num_decks
+        restart
+    end
+
+    def restart
         @cards = []
 
-        num_decks.times do
+        @num_decks.times do
             [Card::CLUBS,
              Card::DIAMONDS,
              Card::HEARTS,
@@ -24,7 +29,11 @@ class Deck
     end
 
     def draw_card
-        @cards.pop
+        c = @cards.pop
+        if @cards.size < (@num_decks * 52) * 0.1
+            restart
+        end
+        c
     end
 
     def put card
