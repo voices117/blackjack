@@ -18,13 +18,17 @@
 
 
 .boton{
-    background-color: blue;
+    background-color: darkblue;
 	color: white;
     width: auto;
     padding: 10px;
     border-radius: 6px;
 	text-decoration: none;
 	margin-right: 20px;
+}
+
+h3{
+	margin:0;
 }
 
 .card{
@@ -47,11 +51,11 @@
 	text-align: center;
 }
 .mesa{
-	height: 240px;
+	height: auto;
 	background-color: green;
 	margin: 0 auto;
-	width: 80%;
-	padding: 4%;
+	width: 50%;
+	padding: 1% 4%;
 	border: 5px solid black;
 	border-radius: 5px;
 }
@@ -59,7 +63,18 @@
 	background-color: grey;
 }
 #croupier{
-	margin: auto 0;
-	float: left;
+	width: 100%;
+	border-bottom: 1px solid black;
+}
+.resultado{
+	padding:  40px
+}
+.botonera{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.totalizador{
+	margin-top: 15px;
 	width: auto;
+	float: right;
 }
