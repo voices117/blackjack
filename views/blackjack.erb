@@ -15,9 +15,11 @@ suit = [
 
 <div class="mesa">
 	<div id="croupier">
+
 		<%  @@game.finished? ? limit = -1 : limit = -2 %>
 	
 		<% for card in @@game.croupier.hand[0..limit] do %>
+
 			<div class="card">
 				<%=	suit[card.suit] %> 
 				<div class="numero">
@@ -32,6 +34,7 @@ suit = [
 				
 		</div>
 		<% end %>
+
 	</div>	
 	<div id="jugador">
 		<% for card in @@game.players[0].hand do %>
