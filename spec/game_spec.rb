@@ -214,4 +214,98 @@ describe 'Game' do
 		g.croupier.score.should == 17
 	end
 
+	it 'should display the user as busted if he gets over 21' do
+		g = Game.new
+		p1 = Player.new
+		g.add_player p1
+
+		# fix the deck so the user gets busted
+		g.deck.put(Card.new Card::DIAMONDS, 10) # player's card (draws)
+		g.deck.put(Card.new Card::DIAMONDS, 9) # croupier's card
+		g.deck.put(Card.new Card::HEARTS, 10) # croupier's card
+		g.deck.put(Card.new Card::CLUBS, 12)  # player's card
+		g.deck.put(Card.new Card::SPADES, 5)  # player's card
+
+		g.new_round
+
+		g.deal
+		g.next_turn
+
+		p1.score.should == 25
+		g.player_status(p1).should == Game::BUSTED
+	end
+
+	it 'should display the user lost if the croupier beats him' do
+		g = Game.new
+		p1 = Player.new
+		g.add_player p1
+
+		# fix the deck so the user gets busted
+		g.deck.put(Card.new Card::DIAMONDS, 9) # croupier's card
+		g.deck.put(Card.new Card::HEARTS, 10) # croupier's card
+		g.deck.put(Card.new Card::CLUBS, 12)  # player's card
+		g.deck.put(Card.new Card::SPADES, 5)  # player's card
+
+		g.new_round
+
+		g.next_turn
+
+		g.player_status(p1).should == Game::LOST
+	end
+
+	it 'should display the user won if he beats the croupier' do
+		g = Game.new
+		p1 = Player.new
+		g.add_player p1
+
+		# fix the deck so the user gets busted
+		g.deck.put(Card.new Card::DIAMONDS, 7) # croupier's card
+		g.deck.put(Card.new Card::HEARTS, 10) # croupier's card
+		g.deck.put(Card.new Card::CLUBS, 12)  # player's card
+		g.deck.put(Card.new Card::SPADES, 1)  # player's card
+
+		g.new_round
+
+		g.next_turn
+
+		g.player_status(p1).should == Game::WON
+	end
+
+	it 'should display the user won if the croupier got busted' do
+		g = Game.new
+		p1 = Player.new
+		g.add_player p1
+
+		# fix the deck so the user gets busted
+		g.deck.put(Card.new Card::DIAMONDS, 10) # croupier's card (draw)
+		g.deck.put(Card.new Card::DIAMONDS, 6) # croupier's card
+		g.deck.put(Card.new Card::HEARTS, 10) # croupier's card
+		g.deck.put(Card.new Card::CLUBS, 12)  # player's card
+		g.deck.put(Card.new Card::SPADES, 1)  # player's card
+
+		g.new_round
+
+		g.next_turn
+
+		g.player_status(p1).should == Game::WON
+	end
+
+	it 'should display the user tied if the croupier got the same score' do
+		g = Game.new
+		p1 = Player.new
+		g.add_player p1
+
+		# fix the deck so the user gets busted
+		g.deck.put(Card.new Card::DIAMONDS, 9) # croupier's card
+		g.deck.put(Card.new Card::HEARTS, 10) # croupier's card
+		g.deck.put(Card.new Card::CLUBS, 12)  # player's card
+		g.deck.put(Card.new Card::SPADES, 9)  # player's card
+
+		g.new_round
+
+		g.next_turn
+
+		g.player_status(p1).should == Game::TIE
+	end
+
 end

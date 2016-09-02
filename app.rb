@@ -26,17 +26,20 @@ end
 
 get '/plantarme' do
 	@@game.next_turn
+	pstatus = @@game.player_status @@game.players[0]
+	cstatus = @@game.player_status @@game.croupier
 
-	if @@total > 21
+	if pstatus == Game::BUSTED
 		@resultado = "Te pasaste. PERDISTE!!"
-	elsif @@game.croupier.score > 21
+	elsif cstatus == Game::BUSTED
 		@resultado = "El dealer tiene #{@@game.croupier.score}, se paso. GANASTE!!"
-	elsif @@total > @@game.croupier.score
+	elsif pstatus == Game::WON
 		@resultado = "El dealer tiene #{@@game.croupier.score}. GANASTE!!"
-	elsif @@total == @@game.croupier.score
+	elsif pstatus == Game::TIE
 		@resultado = "El dealer tiene #{@@game.croupier.score}. EMPATASTE!!"
-	else 
+	else
 		@resultado = "El dealer tiene #{@@game.croupier.score}. PERDISTE!!"
 	end
+
 	erb :blackjack
 end

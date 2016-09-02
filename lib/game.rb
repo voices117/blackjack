@@ -3,6 +3,12 @@ require_relative 'player'
 
 
 class Game
+	# player game status
+	WON = "won"
+	LOST = "lost"
+	BUSTED = "busted"
+	TIE = "tie"
+
 	attr_reader :score
 	attr_reader :players
 	attr_reader :deck
@@ -55,5 +61,19 @@ class Game
 
 	def finished?
 		@turn >= players.size
+	end
+
+	def player_status player
+		if player.score > 21
+			return BUSTED
+		elsif @croupier.score > 21
+			return WON
+		elsif player.score > @croupier.score
+			return WON
+		elsif player.score == @croupier.score
+			return TIE
+		else
+			return LOST
+		end
 	end
 end
