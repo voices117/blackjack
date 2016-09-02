@@ -3,6 +3,7 @@ Feature: Blackjack
 Scenario: Juego nuevo
 	Given visito la pagina
 	Then veo "Blackjack"
+	And veo "Total: "
 	And veo "Pedir"
 	And veo "Plantarme"
 
@@ -37,3 +38,5 @@ Scenario: Pasarse
 	Then veo "PERDISTE!!"
 	And no veo "Pedir"
 	And no veo "Plantarme"
+
+

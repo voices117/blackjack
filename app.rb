@@ -12,7 +12,6 @@ get '/blackjack' do
 
 	@@game.new_round
 	@@total = @@game.players[0].score
-
 	erb :blackjack
 end
 
@@ -26,10 +25,18 @@ get '/pedir' do
 end
 
 get '/plantarme' do
-	if @@total > 17 && @@total <= 21
-		@resultado = "El dealer tiene 17. GANASTE!!"
-	else
-		@resultado = "El dealer tiene 17. PERDISTE!!"
+	@@game.next_turn
+
+	if @@total > 21
+		@resultado = "Te pasaste. PERDISTE!!"
+	elsif @@game.croupier.score > 21
+		@resultado = "El dealer tiene #{@@game.croupier.score}, se paso. GANASTE!!"
+	elsif @@total > @@game.croupier.score
+		@resultado = "El dealer tiene #{@@game.croupier.score}. GANASTE!!"
+	elsif @@total == @@game.croupier.score
+		@resultado = "El dealer tiene #{@@game.croupier.score}. EMPATASTE!!"
+	else 
+		@resultado = "El dealer tiene #{@@game.croupier.score}. PERDISTE!!"
 	end
 	erb :blackjack
 end

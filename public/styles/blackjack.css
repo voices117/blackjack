@@ -7,11 +7,12 @@
 }
 
 
-.black{
+.black , .black + div{
 	color: black;
+	
 }
 
-.red{
+.red , .red + div{
 	color: red;
 }
 
@@ -46,11 +47,19 @@
 	text-align: center;
 }
 .mesa{
-	height: 120px;
+	height: 240px;
 	background-color: green;
 	margin: 0 auto;
 	width: 80%;
-	padding: 5%;
+	padding: 4%;
 	border: 5px solid black;
 	border-radius: 5px;
+}
+.blank-card{
+	background-color: grey;
+}
+#croupier{
+	margin: auto 0;
+	float: left;
+	width: auto;
 }
