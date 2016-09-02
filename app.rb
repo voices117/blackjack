@@ -3,14 +3,16 @@ require_relative './lib/game'
 require_relative './lib/player'
 
 get '/' do
-    
+
 end
 
 get '/blackjack' do
 	@@game = Game.new
 	@@game.add_player Player.new
+
 	@@game.new_round
 	@@total = @@game.players[0].score
+
 	erb :blackjack
 end
 

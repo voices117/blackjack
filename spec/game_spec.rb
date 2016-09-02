@@ -144,4 +144,74 @@ describe 'Game' do
 		p1.hand.size.should == 2
 		p2.hand.size.should == 2
 	end
+
+	it 'should make the croupier play after all players are done' do
+		g = Game.new
+		p1 = Player.new
+		g.add_player p1
+
+		# fix the deck so the croupier has a 12
+		g.deck.put(Card.new Card::DIAMONDS, 5) # croupier's card (drawn after the user plays)
+		g.deck.put(Card.new Card::DIAMONDS, 1) # croupier's card
+		g.deck.put(Card.new Card::HEARTS, 1) # croupier's card
+		g.deck.put(Card.new Card::CLUBS, 12)  # player's card
+		g.deck.put(Card.new Card::SPADES, 5)  # player's card
+
+		g.new_round
+
+		g.croupier.score.should == 12
+
+		g.next_turn
+
+		# the croupier should have played
+		g.croupier.score.should == 17
+	end
+
+	it '(the croupier) should stop when reaches 17' do
+		g = Game.new
+		p1 = Player.new
+		g.add_player p1
+
+		# fix the deck so the croupier has a 12
+		g.deck.put(Card.new Card::DIAMONDS, 6) # croupier's card
+		g.deck.put(Card.new Card::HEARTS, 1) # croupier's card
+		g.deck.put(Card.new Card::CLUBS, 12)  # player's card
+		g.deck.put(Card.new Card::SPADES, 5)  # player's card
+
+		g.new_round
+
+		g.croupier.score.should == 17
+
+		g.next_turn
+
+		# the croupier shouldn't have played
+		g.croupier.score.should == 17
+	end
+
+	it '(the croupier) should always draw when his score is under 17' do
+		g = Game.new
+		p1 = Player.new
+		g.add_player p1
+
+		# fix the deck so the croupier has a 12
+		g.deck.put(Card.new Card::DIAMONDS, 1) # croupier's card (draws)
+		g.deck.put(Card.new Card::DIAMONDS, 1) # croupier's card (draws)
+		g.deck.put(Card.new Card::DIAMONDS, 6) # croupier's card (draws)
+		g.deck.put(Card.new Card::DIAMONDS, 3) # croupier's card (draws)
+		g.deck.put(Card.new Card::DIAMONDS, 2) # croupier's card (draws)
+		g.deck.put(Card.new Card::DIAMONDS, 2) # croupier's card
+		g.deck.put(Card.new Card::HEARTS, 2) # croupier's card
+		g.deck.put(Card.new Card::CLUBS, 12)  # player's card
+		g.deck.put(Card.new Card::SPADES, 5)  # player's card
+
+		g.new_round
+
+		g.croupier.score.should == 4
+
+		g.next_turn
+
+		# the croupier should have played
+		g.croupier.score.should == 17
+	end
+
 end

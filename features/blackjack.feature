@@ -8,13 +8,13 @@ Scenario: Juego nuevo
 
 Scenario: Ver total
 	Given visito la pagina
-	And el mazo tiene "[4, 4, 4]"
+	And el mazo tiene "[4, 4, 4, 4, 4]"
 	When click "Pedir"
 	Then veo "Total: 12"
 
 Scenario: Ganar
 	Given visito la pagina
-	And el mazo tiene "[6, 4, 4, 4]"
+	And el mazo tiene "[6, 4, 10, 7, 4, 4]"
 	When click "Pedir"
 	And click "Pedir"
  	And click "Plantarme"
@@ -22,14 +22,14 @@ Scenario: Ganar
 
 Scenario: Perder
 	Given visito la pagina
-	And el mazo tiene "[4, 4, 4]"
+	And el mazo tiene "[4, 10, 7, 4, 4]"
 	When click "Pedir"
 	And click "Plantarme"
 	Then veo "PERDISTE!!"
 
 Scenario: Pasarse
 	Given visito la pagina
-	And el mazo tiene "[4, 4, 4, 4, 4, 4]"
+	And el mazo tiene "[4, 4, 4, 4, 10, 7, 4, 4]"
 	When click "Pedir"
 	And click "Pedir"
 	And click "Pedir"
